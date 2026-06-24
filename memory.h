@@ -1,4 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int memory[65536];
+char memory[65536];
+
+
+
+
