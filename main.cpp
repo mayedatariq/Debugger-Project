@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 string toLowerCase(string str)
@@ -15,13 +16,17 @@ string toLowerCase(string str)
 
 int main()
 {
-    string start;
+    string startInput;
     cout << "Z:\\>";
-    cin >> start;
+    getline(cin, startInput);
 
+    startInput = toLowerCase(startInput);
 
-    while (start != "mount c c:\\8086" && start != "mount")
-
+    while (startInput != "mount c c:\\8086")
+    {
+        cout << "Z:\\>";
+        getline(cin, startInput);
+    }
 
 
     return 0;
