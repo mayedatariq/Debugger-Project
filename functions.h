@@ -158,3 +158,33 @@ void c()
 {
 
 }
+
+void e()
+{
+
+}
+
+void f()
+{
+
+}
+
+void h()
+{
+
+}
+
+void m()
+{
+
+}
+
+void r()
+{
+
+}
+
+void s()
+{
+
+}
