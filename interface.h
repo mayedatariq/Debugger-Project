@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include "debug.h"
 using namespace std;
 
 string toLowerCase(string str)
@@ -136,5 +138,5 @@ void interface()
 
     cout << "-";
 
-    
+    debug();
 }
