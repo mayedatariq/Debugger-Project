@@ -1,3 +1,7 @@
+#ifndef INTERFFACE_H
+#define INTERFACE_H
+
+
 #include <iostream>
 #include <string>
 #include "debug.h"
@@ -140,3 +144,6 @@ void interface()
 
     debug();
 }
+
+
+#endif

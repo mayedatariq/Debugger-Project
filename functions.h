@@ -1,3 +1,7 @@
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+
 #include <iostream>
 #include <iomanip>
 #include "memory.h"
@@ -188,3 +192,6 @@ void s()
 {
 
 }
+
+
+#endif

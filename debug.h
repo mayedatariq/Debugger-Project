@@ -1,3 +1,7 @@
+#ifndef DEBUG_H
+#define DEBUG_H
+
+
 #include <iostream>
 #include "functions.h"
 #include <conio.h>
@@ -76,3 +80,6 @@ void debug()
     }
     return;
 }
+
+
+#endif
