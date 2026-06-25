@@ -8,7 +8,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
-
+//to convert command into lowercase (because assembly language is not case-sensitive)
 static void toLowerCase(char* a)
 {
     for (int i = 0; i < 16; i++)
@@ -17,6 +17,7 @@ static void toLowerCase(char* a)
     }
 }
 
+//to mount C drive
 static void mountC()
 {
     char startInput[16];
@@ -64,6 +65,8 @@ static void mountC()
 
 }
 
+
+//to enter Drive C
 static void enterC()
 {
     char startInput[16];
@@ -111,6 +114,8 @@ static void enterC()
     }
 }
 
+
+//to enter Debugger
 static void enterDebugger()
 {
     char startInput[16];
@@ -159,11 +164,19 @@ static void enterDebugger()
 
 void interface()
 {
+    //mounts C drive
     mountC();
+
+    //enters C drive
     enterC();
+
+    //enters Debugger mode
     enterDebugger();   
 
+    //new Debugger object created
     Debugger myDebugger;
+
+    //Debugger Launched
     myDebugger.start();
 }
 

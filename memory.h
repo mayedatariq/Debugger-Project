@@ -161,6 +161,74 @@ class Memory
         }
     }
 
+
+    void compareMemory()
+    {
+        int point1, point2, start;
+        cin >> hex >> point1 >> point2 >> start;
+        
+        int counter = point2 - point1;
+
+        for (int i = 0; i <= counter; i++)
+        {
+            if (memory[point1 + i] != memory[start + i])
+            {
+                cout << "073F:" << hex << setw(4) << setfill('0') << point1 + i << "  " << setw(2) << setfill('0') << int(memory[point1 + i]) << "  " << setw(2) << setfill('0') << int(memory[start + i]) << "  073F:" << setw(4) << setfill('0') << start + i << '\n';
+            }
+        }
+    }
+
+    void enterMemory()
+    {
+        short int address, value;
+        cin >> hex >> address >> value;
+        cin.ignore();
+
+        memory[address] = value;
+    }
+
+    void fillMemory()
+    {
+        short int point1, point2, value;
+        cin >> hex >> point1 >> point2 >> value;
+        cin.ignore();
+
+        for (int i = point1; i <= point2; i++)
+        {
+            memory[i] = value;
+        }
+    }
+
+    void moveMemory()
+    {
+        short int point1, point2, start;
+
+        cin >> hex >> point1 >> point2 >> start;
+        cin.ignore();
+        while(point1 <= point2)
+        {
+            memory[start] = memory[point1];
+            point1++;
+            start++;
+        }
+    }
+
+    void searchMemory()
+    {
+        short int start, end, value;
+
+        cin >> hex >> start >> end >> value;
+        cin.ignore();
+
+        for (short int i = start; i <= end; i++)
+        {
+            if (memory[i] == value)
+            {
+                cout << "073F:" << setw(4) << setfill('0') << i << '\n';
+            }
+        }
+    }
+
 };
 
 
