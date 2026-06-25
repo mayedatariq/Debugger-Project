@@ -1,148 +1,170 @@
-#ifndef INTERFFACE_H
+#ifndef INTERFACE_H
 #define INTERFACE_H
 
 
 #include <iostream>
-#include <string>
-#include "debug.h"
+#include <cstring>
+#include "debugger.h"
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
-string toLowerCase(string str)
-{
-    int length = str.length();
 
-    for (int i = 0; i < length; i++)
+static void toLowerCase(char* a)
+{
+    for (int i = 0; i < 16; i++)
     {
-        str[i] = tolower(str[i]);
+        a[i] = tolower(a[i]);
     }
-    return str;
 }
 
-void interface()
+static void mountC()
 {
-    string startInput;
+    char startInput[16];
 
     //mounting c loop
     cout << "Z:\\>";
-    getline(cin, startInput);
+    cin.getline(startInput, 16);
 
-    startInput = toLowerCase(startInput);
+    toLowerCase(startInput);
 
-    while (startInput != "mount c c:\\8086")
+    while (strcmp(startInput, "mount c c:\\8086") != 0)
     {
-        if (startInput == "mount")
+        if (strcmp(startInput, "mount") == 0)
         {
             cout << "Current mounted drives are: \nDrive Z is mounted as Internal Virtual Drive\n";
         }
-        else if (startInput == "mount c")
+        else if (strcmp(startInput, "mount c") == 0)
         {
             cout << "Usage \033[34m MOUNT Drive-Letter Local-Directory\033[0m\n";
             cout << "For example: MOUNT c d:\\dosprogs\n";
             cout << "This makes the directory d:\\dosprogs act as the C: drive inside DOSBox. \nThe directory has to exist. \n";
         }
-        else if (startInput == "mount c c" || startInput == "mount c c:")
+        else if (strcmp(startInput, "mount c c") == 0 || strcmp(startInput, "mount c c:") == 0)
         {
             cout << "Directory C doesn't exist. \n";
         }
-        else if (startInput == "mount c c:\\")
+        else if (strcmp(startInput, "mount c c:\\") == 0)
         {
             cout << "\033[31mMounting c:\\ is NOT recommended. Please mount a (sub)directory next time.\033[0m\nDrive C is mounted as local directory c:\\\n";
         }
         else
         {
-            if (startInput.length() != 0)
+            if (strcmp(startInput, "") != 0)
             {
             cout << "Illegal command: " << startInput << '\n';
             }
         }
         
         cout << "Z:\\>";
-        getline(cin, startInput);
+        cin.getline(startInput, 16);
+        toLowerCase(startInput);
     }
 
     cout << "Drive C is mounted as local directory c:\\8086\\\n";
 
+}
+
+static void enterC()
+{
+    char startInput[16];
+
     //entering c loop
     cout << "Z:\\>";
-    getline(cin, startInput);
+    cin.getline(startInput, 16);
 
-    startInput = toLowerCase(startInput);
+    toLowerCase(startInput);
 
-    while (startInput != "c:")
+    while (strcmp(startInput, "c:") != 0)
     {
-        if (startInput == "mount")
+        if (strcmp(startInput, "mount") == 0)
         {
             cout << "Current mounted drives are: \nDrive C is mounted as local directory c:\\8086\\\nDrive Z is mounted as Internal Virtual Drive\n";
         }
-        else if (startInput == "mount c")
+        else if (strcmp(startInput, "mount c") == 0)
         {
             cout << "Usage \033[34m MOUNT Drive-Letter Local-Directory\033[0m\n";
             cout << "For example: MOUNT c d:\\dosprogs\n";
             cout << "This makes the directory d:\\dosprogs act as the C: drive inside DOSBox. \nThe directory has to exist. \n";
         }
-        else if (startInput == "mount c c" || startInput == "mount c c:")
+        else if (strcmp(startInput, "mount c c") == 0 || strcmp(startInput, "mount c c:") == 0)
         {
             cout << "Directory C doesn't exist. \n";
         }
-        else if (startInput == "mount c c:\\")
+        else if (strcmp(startInput, "mount c c:\\") == 0)
         {
             cout << "\033[31mMounting c:\\ is NOT recommended. Please mount a (sub)directory next time.\033[0m\nDrive C is already mounted as local directory c:\\\n";
         }
-        else if (startInput == "mount c c:\\8086")
+        else if (strcmp(startInput, "mount c c:\\8086") == 0)
         {
             cout << "Drive C is already mounted with local directory c:\\8086\\\n";
         }
         else
         {
-            if (startInput.length() != 0)
+            if (strcmp(startInput, "") != 0)
             {
             cout << "Illegal command: " << startInput << '\n';
             }
         }
-
+        cout << "Z:\\>";
+        cin.getline(startInput, 16);
+        toLowerCase(startInput);
     }
-    
+}
+
+static void enterDebugger()
+{
+    char startInput[16];
+
     //entering debugger loop
     cout << "C:\\>";
-    getline(cin, startInput);
+    cin.getline(startInput, 16);
 
-    startInput = toLowerCase(startInput);
+    toLowerCase(startInput);
 
-    while (startInput != "debug")
+    while (strcmp(startInput, "debug") != 0)
     {
-        if (startInput == "mount")
+        if (strcmp(startInput, "mount") == 0)
         {
             cout << "Current mounted drives are: \nDrive Z is mounted as Internal Virtual Drive\n";
         }
-        else if (startInput == "mount c")
+        else if (strcmp(startInput, "mount c") == 0)
         {
             cout << "Usage \033[34m MOUNT Drive-Letter Local-Directory\033[0m\n";
             cout << "For example: MOUNT c d:\\dosprogs\n";
             cout << "This makes the directory d:\\dosprogs act as the C: drive inside DOSBox. \nThe directory has to exist. \n";
         }
-        else if (startInput == "mount c c" || startInput == "mount c c:")
+        else if (strcmp(startInput, "mount c c") == 0 || strcmp(startInput, "mount c c:") == 0)
         {
             cout << "Directory C doesn't exist. \n";
         }
-        else if (startInput == "mount c c:\\")
+        else if (strcmp(startInput, "mount c c:\\") == 0)
         {
             cout << "\033[31mMounting c:\\ is NOT recommended. Please mount a (sub)directory next time.\033[0m\nDrive C is mounted as local directory c:\\\n";
         }
         else
         {
-            if (startInput.length() != 0)
+            if (strcmp(startInput, "") != 0)
             {
             cout << "Illegal command: " << startInput << '\n';
             }
         }
         
-        cout << "Z:\\>";
-        getline(cin, startInput);
+        cout << "C:\\>";
+        cin.getline(startInput, 16);
+        toLowerCase(startInput);
     }
 
     cout << "-";
+}
 
-    debug();
+void interface()
+{
+    mountC();
+    enterC();
+    enterDebugger();   
+
+    Debugger myDebugger;
+    myDebugger.start();
 }
 
 
