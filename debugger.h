@@ -17,7 +17,6 @@ static char takeCommand()
     return mode;
 }
 
-
 //for 'h' command
 static void performArithemetic()
 {
@@ -183,6 +182,7 @@ class Debugger
         cout << "DS=" << setw(4) << setfill('0') << DS.getValue() << "  ES=" << setw(4) << setfill('0') << ES.getValue() << "  SS=" << setw(4) << setfill('0') << SS.getValue() << "  CS=" << setw(4) << setfill('0') << CS.getValue() << "  IP=" << setw(4) << setfill('0') << IP.getValue();
     }
 
+    //displays a single register and uses upadteValue to update its value
     void displayRegister(char* str)
     {
         char registerName[3];
@@ -259,6 +259,7 @@ class Debugger
 
     }
 
+    //updates register value
     void updateRegister(Register& r)
     {
         unsigned short int a;

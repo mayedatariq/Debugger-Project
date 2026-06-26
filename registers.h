@@ -6,7 +6,6 @@
 #include <cstring>
 using namespace std;
 
-
 class Register
 {
     private:
@@ -23,6 +22,5 @@ class Register
         value = a;
     }
 };
-
 
 #endif

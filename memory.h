@@ -1,7 +1,6 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -197,8 +196,6 @@ class Memory
     }
 
 };
-
-
 
 #endif
 
