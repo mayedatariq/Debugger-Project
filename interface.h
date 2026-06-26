@@ -158,8 +158,6 @@ static void enterDebugger()
         cin.getline(startInput, 16);
         toLowerCase(startInput);
     }
-
-    cout << "-";
 }
 
 void interface()

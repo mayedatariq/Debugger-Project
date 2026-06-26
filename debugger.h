@@ -6,6 +6,18 @@
 #include "memory.h"
 #include "registers.h"
 
+//to input command
+static char takeCommand()
+{
+    char mode;
+    cout << "\n-" << flush;
+    mode = _getch();
+    cout << mode;
+    mode = tolower(mode);
+    return mode;
+}
+
+
 //for 'h' command
 static void performArithemetic()
 {
@@ -37,70 +49,52 @@ class Debugger
     //launches Debugger
     void start()
     {
-        char mode;
-
-        mode = _getch();
-        cout << mode;
-
-        mode = tolower(mode);
+        char mode = takeCommand();
 
         //take instructions until q entered (loop)
         while (mode != 'q')
         {
             switch(mode)
             {
+                //if pressed "Enter"
+                case '\r':
+                mode = takeCommand();
+                break;
+
                 //d instruction for dumping memory
                 case 'd':
                 myMemory.dumpMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //c for comparing memory
                 case 'c':
                 myMemory.compareMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //e for entering a value in memory
                 case 'e': 
                 myMemory.enterMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //f for filling a range with some value in memory
                 case 'f':
                 myMemory.fillMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //h for performing arithmetic on two given values
                 case 'h':
                 performArithemetic();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //m for moving(copying) in memory
                 case 'm':
                 myMemory.moveMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //r for showing registers
@@ -115,22 +109,17 @@ class Debugger
                 {
                     displayRegister(str);
                 }
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
 
                 //s for searching in memory
                 default:                //case 's':
                 myMemory.searchMemory();
-                cout << "\n-";
-                mode = _getch();
-                cout << mode;
-                mode = tolower(mode);
+                mode = takeCommand();
                 break;
             }
         }
+        cin.get(mode);
     return;
     }
 
