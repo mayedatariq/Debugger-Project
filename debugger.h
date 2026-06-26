@@ -58,44 +58,89 @@ class Debugger
             {
                 //if pressed "Enter"
                 case '\r':
-                mode = takeCommand();
-                break;
+                {
+                    mode = takeCommand();
+                    break;
+                }
 
                 //d instruction for dumping memory
                 case 'd':
-                myMemory.dumpMemory();
-                mode = takeCommand();
-                break;
+                {
+                    char a;
+                    int startP = 0, endP = 0;
+                    cin.get(a);
+                    if (a != '\n')
+                    {
+                        cin >> hex >> startP;
+                        cin.get(a);
+                        if (a != '\n')
+                        {
+                            cin >> hex >> endP;
+                            cin.ignore();
+                        }
+                    }
+                    myMemory.dumpMemory(startP, endP);
+                    mode = takeCommand();
+                    break;
+                }
 
                 //c for comparing memory
                 case 'c':
-                myMemory.compareMemory();
-                mode = takeCommand();
-                break;
+                {
+                    int point1, point2, start;
+                    cin >> hex >> point1 >> point2 >> start;
+
+                    myMemory.compareMemory(point1, point2, start);
+                    mode = takeCommand();
+                    break;
+                }
+                
 
                 //e for entering a value in memory
                 case 'e': 
-                myMemory.enterMemory();
-                mode = takeCommand();
-                break;
+                {
+                    unsigned short int address, value;
+                    cin >> hex >> address >> value;
+                    cin.ignore();
+
+                    myMemory.enterMemory(address, value);
+                    mode = takeCommand();
+                    break;
+                }
 
                 //f for filling a range with some value in memory
                 case 'f':
-                myMemory.fillMemory();
-                mode = takeCommand();
-                break;
+                {
+                    unsigned short int point1, point2, value;
+                    cin >> hex >> point1 >> point2 >> value;
+                    cin.ignore();
+
+                    myMemory.fillMemory(point1, point2, value);
+                    mode = takeCommand();
+                    break;
+                }
 
                 //h for performing arithmetic on two given values
                 case 'h':
-                performArithemetic();
-                mode = takeCommand();
-                break;
+                {
+                    performArithemetic();
+                    mode = takeCommand();
+                    break;
+                }
 
                 //m for moving(copying) in memory
                 case 'm':
-                myMemory.moveMemory();
-                mode = takeCommand();
-                break;
+                {
+                    short int point1, point2, start;
+
+                    cin >> hex >> point1 >> point2 >> start;
+                    cin.ignore();
+                    
+                    myMemory.moveMemory(point1, point2, start);
+                    mode = takeCommand();
+                    break;
+                }
+                
 
                 //r for showing registers
                 case 'r':
@@ -114,13 +159,21 @@ class Debugger
 
                 //s for searching in memory
                 default:                //case 's':
-                myMemory.searchMemory();
-                mode = takeCommand();
-                break;
+                {
+                    unsigned short int start, end, value;
+
+                    cin >> hex >> start >> end >> value;
+                    cin.ignore();
+
+                    myMemory.searchMemory(start, end, value);
+                    mode = takeCommand();
+                    break;
+                }
+                
             }
         }
         cin.get(mode);
-    return;
+        return;
     }
 
     //displays all registers
