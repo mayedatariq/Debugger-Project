@@ -5,7 +5,8 @@ using namespace std;
 int main()
 {
     //launches main interface
-    interface();
+    Interface newInterface;
+    newInterface.run();
 
     return 0;
 }
